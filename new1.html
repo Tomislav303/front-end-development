@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>responsive-gallery</title>
+      <style>
+
+       body {
+            font-family: sans-serif;
+            padding: 3px;
+        }
+
+        header {
+            background-color: beige;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        #grid1 {
+            display: grid;
+            grid-gap: 40px;
+            grid-template-columns: repeat(5, minmax(120px, auto));
+            align-content: center;
+        }
+
+        .img > img {
+            width: 100%;
+            background-color: rgb(39, 101, 182);
+            border-radius: 10px;
+            
+        }
+
+        .title {
+            font-size: 16px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .img > .title {
+
+            align-items: end;
+        }
+
+        p {
+            background-color: whitesmoke;
+            margin: 20px 0;
+        }
+
+        .title {
+            align-items: start;
+        }
+
+        @media screen and (max-width: 768px) {
+            #grid1 {
+                grid-template-columns: repeat(3, minmax(120px, auto));
+            }
+        }
+
+        @media screen and (max-width: 414px) {
+            #grid1 {
+                grid-template-columns: repeat(1, minmax(120px, auto));
+            }
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <header>Gallery Heading</header>
+
+    <div id="grid1">
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>
+        <div class="img">
+            <img src="placeholder-image.png">
+            <p class="title">Image Title</p>
+        </div>   
+    </div>
+
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+
+</body>
+</html>
