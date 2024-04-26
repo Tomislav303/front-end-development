@@ -1,0 +1,108 @@
+body {
+    background-color: #f6f6f6;
+	
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+header {
+    background-color: #f6f6f6;
+}
+
+header a,
+header a:hover,
+header a:visited {
+    margin-left: 32px;
+    color: black;
+}
+
+#menu-icon {
+    width: 35px;
+    padding-top: 1%;
+}
+
+@media (max-width:520px) {
+    header h1 {
+        font-size: 2rem;
+        padding-top: 10px;
+    }
+
+    #menu-icon {
+        width: 35px;
+		
+	}	
+  
+}
+#hero-text {
+    background-color: #31c389;
+    color: white;
+    display: inline-block;
+    text-align: relative;
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+
+.hero-bg {
+    width: 100%;
+}
+
+@media (max-width:660px) {
+    #hero-text {
+        font-size: 20px;
+        top: 18px;
+        left: 18px;
+    }
+}
+
+@media (max-width:500px) {
+    #hero-text {
+        font-size: 12px;
+        top: 15px;
+        left: 15px;
+    }
+}
+
+@media (max-width:300px) {
+    #hero-text {
+        font-size: 15px;
+        top: 0px;
+        left: 0px;
+    }
+}
+
+
+
+.recentWork-title,
+.blog-title {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.recentWork-pic {
+    width: 45%;
+}
+
+
+.gray {
+    background-color: #222222;
+}
+
+.black {
+    background-color: #111111;
+}
+
+footer a,
+.line,
+footer a:hover,
+footer a:visited {
+    border-bottom: 1px solid #343434;
+    color: #afb1b6;
+    margin: 0;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
