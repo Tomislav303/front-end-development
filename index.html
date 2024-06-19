@@ -22,12 +22,11 @@
             return `Name: ${this.name}, Address: ${this.address}, Phone: ${this.phone}, Course: ${this.course}`;
         };
 
-        // Kreiranje tri objekta studenata
         const student1 = new Student("John Benson", "High Park 36", "(507) 833-3567", "Geography");
         const student2 = new Student("Anna Smith", "Oak Street 12", "(312) 555-7890", "Mathematics");
         const student3 = new Student("Robert Brown", "Maple Avenue 47", "(213) 456-1234", "Computer Science");
 
-        // Funkcija za prikaz informacija o studentima na stranici
+       
         function displayStudentInfo() {
             const studentInfoDiv = document.getElementById('student-info');
             studentInfoDiv.innerHTML = `
