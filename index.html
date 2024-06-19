@@ -1,43 +1,41 @@
-<h1>Stevan Stojanović Mokranjac</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Info</title>
+</head>
+<body>
+    <h1>Student Information</h1>
+    <button onclick="displayStudentInfo()">Show Student Info</button>
+    <div id="student-info"></div>
 
-<p>Stevan Stojanović Mokranjac (<i>January 9, 1856-1914 </i>) was a Serbian composer and music educator. His work was essential in bringing the spirit of Valach Serbian unwritten folk poem intro organiyed art.</p>
+    <script>
+        function Student(name, address, phone, course) {
+            this.name = name;
+            this.address = address;
+            this.phone = phone;
+            this.course = course;
+        }
 
-<h1>Biography</h1>
+        Student.prototype.getInfo = function() {
+            return `Name: ${this.name}, Address: ${this.address}, Phone: ${this.phone}, Course: ${this.course}`;
+        };
 
-<p>He was born in Negotin. From the birthplace of his parents he drew the second last name Mokranjac (literally: residenr of Mokranje).</p>
+        // Kreiranje tri objekta studenata
+        const student1 = new Student("John Benson", "High Park 36", "(507) 833-3567", "Geography");
+        const student2 = new Student("Anna Smith", "Oak Street 12", "(312) 555-7890", "Mathematics");
+        const student3 = new Student("Robert Brown", "Maple Avenue 47", "(213) 456-1234", "Computer Science");
 
-<p>He graduated from the <strong>Belgrade</strong> high school, and attended the nutural science and mathematics section of the University of Belgrade. In 1879 he traveled to Munich where he  studied music in the music in the class off Josef Rheinberger. After a brief beeak, he continued to study in Rome in the class of Parisotti, in 1884. Returning to Sebia in 1884 he briefl  became the conductor of the Kornelije Stanković choir of Belgrade</p>
-
-<p>From 1885 to 1887 he studied music in Leipzig, Germany. Upon his return to Serbia in 1887 he became the cinductor of the Belgrade singing society (Belgrade Choir). From 1887 to 1900 he taught music at the Belgrade high school , and in 1901 transferred to Bogoslovija ( Belgrade Theological College ) where he taught church singing. Together with <em>Stanisalav Binički and Cvetko Manojlović</em>, Mokranjac founded the first independent music school in 1899 - <strong>Serbian Music School in Belgrade</strong>. He remains the director of this school until his death. Today the school bears his name. His work as a melograph bore many transcriptions of thus far unwritten folk songs </p>
-
-<i><strong>Stevan Mokranjac died in Skopje, Macedonia ( then Kingdom of Serbia), aged 58.</strong></i>
-
-<p> Every year, the town of Negotin organizes a music festival in his honor called <ins>Mokranjčevi dani ( Days od Mokranjac)</ins></p>
-
-<h1>Works</h1>
-
-<p> His life was highly influenced by church and folk, and he used these two types of works. His most famous pieces are <strong>the fifteen Rukoveti</strong> ( Potpourri; literally: "handfuls" or "bunches")- a collection of songs and music (<ins>orchestral suites</ins>) based on motives of <strong>Serbian folk music from Bosnia and Herzegovina,Serbia Proper, Montenegro, Kosovo and Metohija, Macedonia and Bulgaria </strong>. His other prominent folk-based works include <ins>Primorski napjevi (Coastland tunes) and Kozara</ins> </p>
-
-<p>A significant number of his works were made for church services. Such as the <i><strong>the Božanstvena Liturgija Svetog Jovana Zlatoustog (The Divine Liturgy of St. Chrysostom), from which the Heruvimska pesma (Cherubic hymn)</strong></i> is most famous.  Another two famous religious pieces are <strong>Tebe Boga hvalim (Te Deum) and Veličanije Sv. Savi (Megalynarion to St. Sava).</strong> </p>
-
-<h1>Compositions</h1>
-
-<p>Some of the most famous Mokranjac's compositions are:
-<ul>
-    <li>Statija treća</li>
-    <li>Tebe pojem</li>
-    <li>Aliluja (Alleluia after the Cherubikon)</li>
-    <li>Aliluja (Alleluia after the Trisagion)</li>
-    <li>Budi imja Gospodnje</li>
-    <li>Cherubic Hymn (Heruvimska pesma) </li>
-    <li>Dve pesme na veliki petak</li>
-    <li>Akatist</li>
-     <li>Opelo</li>
-    <li>Tebe Boga hvalim</li>
-    <li>Kozar</li>
-    <li>Mnogaja ljeta</li>
-    <li>Molitvami Bogorodici</li>
-    <li>Njest svjat</li>
-</ul>
-
-</p>
+        // Funkcija za prikaz informacija o studentima na stranici
+        function displayStudentInfo() {
+            const studentInfoDiv = document.getElementById('student-info');
+            studentInfoDiv.innerHTML = `
+                <p>${student1.getInfo()}</p>
+                <p>${student2.getInfo()}</p>
+                <p>${student3.getInfo()}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
