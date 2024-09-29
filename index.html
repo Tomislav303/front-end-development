@@ -3,38 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Info</title>
+    <title>PhoneBook</title>
+
+    <style>
+        .App {
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input {
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li button {
+            margin-left: 20px;
+            padding: 3px 8px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Student Information</h1>
-    <button onclick="displayStudentInfo()">Show Student Info</button>
-    <div id="student-info"></div>
 
-    <script>
-        function Student(name, address, phone, course) {
-            this.name = name;
-            this.address = address;
-            this.phone = phone;
-            this.course = course;
+    <div id="container"></div>
+    
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        function App() {
+            const [contacts, setContacts] = React.useState([]);
+
+            // Učitavanje kontakata iz localStorage prilikom prvog renderovanja
+            React.useEffect(() => {
+                const savedContacts = JSON.parse(localStorage.getItem("contacts")) || [];
+                setContacts(savedContacts);
+            }, []);
+
+            // Čuvanje kontakata u localStorage kada se lista promeni
+            React.useEffect(() => {
+                localStorage.setItem("contacts", JSON.stringify(contacts));
+            }, [contacts]);
+
+            const addContact = (name, phone) => {
+                const newContact = { id: Date.now(), name, phone };
+                setContacts([...contacts, newContact]);
+            };
+
+            const deleteContact = (id) => {
+                setContacts(contacts.filter(contact => contact.id !== id));
+            };
+
+            return (
+                <div className="App">
+                    <h1>Phone Book</h1>
+                    <PhoneBook contacts={contacts} addContact={addContact} deleteContact={deleteContact} />
+                </div>
+            );
         }
 
-        Student.prototype.getInfo = function() {
-            return `Name: ${this.name}, Address: ${this.address}, Phone: ${this.phone}, Course: ${this.course}`;
-        };
+        function PhoneBook({ contacts, addContact, deleteContact }) {
+            const [name, setName] = React.useState("");
+            const [phone, setPhone] = React.useState("");
 
-        const student1 = new Student("John Benson", "High Park 36", "(507) 833-3567", "Geography");
-        const student2 = new Student("Anna Smith", "Oak Street 12", "(312) 555-7890", "Mathematics");
-        const student3 = new Student("Robert Brown", "Maple Avenue 47", "(213) 456-1234", "Computer Science");
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (name && phone) {
+                    addContact(name, phone);
+                    setName("");
+                    setPhone("");
+                }
+            };
 
-       
-        function displayStudentInfo() {
-            const studentInfoDiv = document.getElementById('student-info');
-            studentInfoDiv.innerHTML = `
-                <p>${student1.getInfo()}</p>
-                <p>${student2.getInfo()}</p>
-                <p>${student3.getInfo()}</p>
-            `;
+            return (
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        <input 
+                            type="text" 
+                            placeholder="Name" 
+                            value={name} 
+                            onChange={(e) => setName(e.target.value)} 
+                            required 
+                        />
+                        <input 
+                            type="text" 
+                            placeholder="Phone Number" 
+                            value={phone} 
+                            onChange={(e) => setPhone(e.target.value)} 
+                            required 
+                        />
+                        <button type="submit">Add Contact</button>
+                    </form>
+
+                    <ul>
+                        {contacts.map(contact => (
+                            <li key={contact.id}>
+                                {contact.name} - {contact.phone}
+                                <button onClick={() => deleteContact(contact.id)}>Delete</button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
         }
+
+        ReactDOM.render(<App />, document.getElementById("container"));
+
     </script>
+    
 </body>
 </html>
